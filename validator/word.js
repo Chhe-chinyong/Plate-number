@@ -1,10 +1,10 @@
 var Filter = require("bad-words"),
-  filter = new Filter();
+	filter = new Filter();
 
-  const validation=function WordValidation(name){
-    console.log(filter.isProfane(name)); // true is bad , false is appropriate
+	const validation=function WordValidation(name){
+		const check=filter.isProfane(name); // true is bad , false is appropriate
+		return check;
+	//	console.log(filter.clean("dont be "+name));
+	}
 
-    console.log(filter.clean("dont be "+name));
-  }
-
-  module.exports.validation=validation;
+	module.exports.validation=validation;

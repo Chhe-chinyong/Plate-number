@@ -45,17 +45,21 @@ app.get("/", (req, res) => {
   // naming route
 app.post("/name", async(req, res) => {
   const newName = {name: req.body.name};
+  const name=newName.name;
+  const check=validator.validation(newName.name);
+  console.log(check);
+  if(check){
+    return res.status(400).json({ name: name});
+  }
   
-  validator.validation(newName.name);
- 
-  console.log(newName.name)
+
   writeImg(newName.name)
 
   
   setTimeout(() => {
     res.sendFile(path.join(__dirname + "/img-temp/hello.jpg"));
   }, 5000);
- // res.send("Hello");
+ 
 });
 
 
