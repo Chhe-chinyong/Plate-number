@@ -1,22 +1,18 @@
 const faker = require("faker");
 const express = require("express");
 const chalk = require("chalk");
-var Filter = require("bad-words"),
-  filter = new Filter();
 const app = express();
 const path = require("path");
 const writeText = "add-text-to-image";
 const bodyParser = require("body-parser");
-var colors = require('colors');
-
-var cors = require("cors");
-
-var Jimp = require("jimp");
+const colors = require('colors');
+const cors = require("cors");
+const Jimp = require("jimp");
+const validator=require("./validator/word");
 var fileName = "./img/index.jpg";
 var loadedImage;
 
  function writeImg(newName) {
-   
     Jimp.read(fileName)
     .then(function(image) {
       loadedImage = image;
@@ -33,10 +29,9 @@ var loadedImage;
           {text:newName,}, textWidth, textHight)
            
         
-        .write("./img-temp/hello.jpg")  }  
+        .write("./img-temp/hello.jpg")  })
         .catch(function(err) {
-      console.error(err);})
-    );
+      console.error(err);});
   }
 
   
@@ -50,18 +45,17 @@ app.get("/", (req, res) => {
   // naming route
 app.post("/name", async(req, res) => {
   const newName = {name: req.body.name};
-  console.log(newName.name)
-  // writeImg(newName.name)
-  // console.log("hello1")
-  // res.sendFile(path.join(__dirname + "/img-temp/hello.jpg"));
-  // console.log('hello')
-  //res.sendFile(path.join(__dirname + "/img-temp/hello.png"));
   
+  validator.validation(newName.name);
+ 
+  console.log(newName.name)
+  writeImg(newName.name)
+
   
   setTimeout(() => {
-    res.sendFile(path.join(__dirname + "/img-temp/hello.png"));
+    res.sendFile(path.join(__dirname + "/img-temp/hello.jpg"));
   }, 5000);
-  res.send("Hello");
+ // res.send("Hello");
 });
 
 
