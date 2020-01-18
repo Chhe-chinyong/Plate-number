@@ -10,7 +10,7 @@ const cors = require("cors");
 const writeImg=require('./fn/writeImg');
 const QRCode = require('qrcode');
 const validator=require("./validator/word_validation");
-const port = 3000;
+const port = "3000";
 
 
 QRCode.toDataURL('I am a pony!', function (err, url) {
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
   // naming route
-app.post("/name", async(req, res) => {
+app.post("https://friendly-sammet-e3698d.netlify.com/name", async(req, res) => {
   const newName = {name: req.body.name};
   const name=newName.name;
   const check=validator.validation(newName.name);
@@ -50,5 +50,5 @@ app.post("/name", async(req, res) => {
 
 //Listen on port 3000
 app.listen(port, () => {
-  console.log(chalk.bold.underline.greenBright("http://localhost:"+port));
+  console.log(chalk.bold.underline.greenBright("https://friendly-sammet-e3698d.netlify.com/"));
 })

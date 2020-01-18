@@ -17,8 +17,9 @@ var fileName = "./img/index.jpg";
           {text:newName,}, textWidth, textHight)
            
         
-        .write("./img-temp/hello.jpg")  })
+        .write("./img-temp/hello.jpg") })
         .catch(function(err) {
       console.error(err);});
   }
+  
   

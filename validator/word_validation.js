@@ -1,6 +1,6 @@
 var Filter = require("bad-words"),
-	filter = new Filter({ placeHolder: 'x'});
-
+	filter = new Filter({ placeHolder: '#'});
+	console.log(filter.clean("asshole"));
 	// Add bad words
 	filter.addWords('KDET', 'KDOR', 'KDMV');
 
