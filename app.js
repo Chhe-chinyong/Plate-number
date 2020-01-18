@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
   // naming route
-app.post("/name", async(req, res) => {
+app.post("https://friendly-sammet-e3698d.netlify.com/name", async(req, res) => {
   const newName = {name: req.body.name};
   const name=newName.name;
   const check=validator.validation(newName.name);
