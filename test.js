@@ -1,2 +1,1 @@
-// Hello World
-// Hello
+console.log("Hello World");
