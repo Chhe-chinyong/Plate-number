@@ -28,25 +28,25 @@ app.get("/", (req, res) => {
 });
 
   // naming route
-app.post("https://amazing-mclean-123aa0.netlify.com/name", async(req, res) => {
-  const newName = {name: req.body.name};
-  const name=newName.name;
-  const check=validator.validation(newName.name);
-  console.log(check);
-  if(check){
-    //`${name} is bad word`;
-    return res.status(400).json({ bad_name: name});
-  }
+// app.post("https://amazing-mclean-123aa0.netlify.com/name", async(req, res) => {
+//   const newName = {name: req.body.name};
+//   const name=newName.name;
+//   const check=validator.validation(newName.name);
+//   console.log(check);
+//   if(check){
+//     //`${name} is bad word`;
+//     return res.status(400).json({ bad_name: name});
+//   }
   
- else{
-  writeImg(name.toUpperCase());
- }
+//  else{
+//   writeImg(name.toUpperCase());
+//  }
   
-  setTimeout(() => {
-    res.sendFile(path.join(__dirname + "/img-temp/hello.jpg"));
-  }, 5000);
+//   setTimeout(() => {
+//     res.sendFile(path.join(__dirname + "/img-temp/hello.jpg"));
+//   }, 5000);
  
-});
+// });
 
 
 //Listen on port 3000
