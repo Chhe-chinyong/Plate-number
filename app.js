@@ -7,32 +7,15 @@ const writeText = "add-text-to-image";
 const bodyParser = require("body-parser");
 const colors = require('colors');
 const cors = require("cors");
-const Jimp = require("jimp");
-const validator=require("./validator/word");
-var fileName = "./img/index.jpg";
-var loadedImage;
+const writeImg=require('./fn/writeImg');
+const QRCode = require('qrcode');
+const validator=require("./validator/word_validation");
 
- function writeImg(newName) {
-    Jimp.read(fileName)
-    .then(function(image) {
-      loadedImage = image;
-      return (Jimp.loadFont(Jimp.FONT_SANS_32_BLACK));
-    })
-    .then(function(font) {
-      var textWidth = Jimp.measureText(font, newName);
-      var textHight = Jimp.measureTextHeight(font, newName);
-      loadedImage
-        .print(
-          font,
-          loadedImage.bitmap.width/2- textWidth/2,
-          loadedImage.bitmap.height/2- textHight/2, 
-          {text:newName,}, textWidth, textHight)
-           
-        
-        .write("./img-temp/hello.jpg")  })
-        .catch(function(err) {
-      console.error(err);});
-  }
+
+QRCode.toDataURL('I am a pony!', function (err, url) {
+  console.log(url)
+});
+
 
   
 app.use(cors());
@@ -49,12 +32,13 @@ app.post("/name", async(req, res) => {
   const check=validator.validation(newName.name);
   console.log(check);
   if(check){
-    return res.status(400).json({ name: name});
+    //`${name} is bad word`;
+    return res.status(400).json({ bad_name: name});
   }
   
-
-  writeImg(newName.name)
-
+ else{
+  writeImg(name.toUpperCase());
+ }
   
   setTimeout(() => {
     res.sendFile(path.join(__dirname + "/img-temp/hello.jpg"));
@@ -63,10 +47,9 @@ app.post("/name", async(req, res) => {
 });
 
 
-
-
-
 //Listen on port 3000
 app.listen(3000, () => {
   console.log(chalk.bold.underline.greenBright("http://localhost:3000"));
 });
+
+// hello 
