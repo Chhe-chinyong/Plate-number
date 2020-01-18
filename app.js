@@ -50,11 +50,6 @@ app.post("/name", async(req, res) => {
 //Listen on port 3000
 app.listen(3000, () => {
   console.log(chalk.bold.underline.greenBright("http://localhost:3000"));
-<<<<<<< HEAD
-}); 
-=======
-});
+})
 
-// hello 
-// hello world 
->>>>>>> fbfd966c0dc7398846c754ea9b924a59a2e53fae
+// Hello
