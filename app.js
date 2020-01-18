@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 });
 
   // naming route
-app.post("https://amazing-mclean-123aa0.netlify.com/name", async(req, res) => {
+app.post("https://heuristic-goldberg-df80a5.netlify.com/name", async(req, res) => {
   const newName = {name: req.body.name};
   const name=newName.name;
   const check=validator.validation(newName.name);
