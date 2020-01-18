@@ -21,3 +21,4 @@ var fileName = "./img/index.jpg";
         .catch(function(err) {
       console.error(err);});
   }
+  
