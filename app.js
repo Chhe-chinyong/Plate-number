@@ -49,7 +49,7 @@ app.post("https://heuristic-goldberg-df80a5.netlify.com/name", async(req, res) =
  
 });
 
-app.get('/hello',(req,res)=>{
+app.get('https://heuristic-goldberg-df80a5.netlify.com//hello',(req,res)=>{
     res.render("hello");
 })
 
