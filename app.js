@@ -10,7 +10,7 @@ const cors = require("cors");
 const writeImg=require('./fn/writeImg');
 const QRCode = require('qrcode');
 const validator=require("./validator/word_validation");
-const port = "https://friendly-sammet-e3698d.netlify.com/";
+const port = "3000";
 
 
 QRCode.toDataURL('I am a pony!', function (err, url) {
