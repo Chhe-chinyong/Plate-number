@@ -21,7 +21,7 @@ QRCode.toDataURL('I am a pony!', function (err, url) {
   
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.set('view engine',"ejs");
 app.get("/", (req, res) => {
   // res.send('hello');
   //res.send("hello");
@@ -48,6 +48,10 @@ app.post("https://heuristic-goldberg-df80a5.netlify.com/name", async(req, res) =
   }, 5000);
  
 });
+
+app.get('/hello',(req,res)=>{
+    res.render("hello");
+})
 
 
 //Listen on port 3000
