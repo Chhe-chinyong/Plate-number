@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   // res.send('hello');
+  res.send("hello");
   res.sendFile(path.join(__dirname + "/index.html"));
 });
 
