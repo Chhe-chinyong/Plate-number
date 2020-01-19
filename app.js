@@ -13,9 +13,9 @@ const validator=require("./validator/word_validation");
 const port = "3000";
 
 
-QRCode.toDataURL('I am a pony!', function (err, url) {
-  console.log(url)
-});
+// QRCode.toDataURL('I am a pony!', function (err, url) {
+//   console.log(url)
+// });
 
 
   
@@ -25,8 +25,8 @@ app.set('view engine',"ejs");
 app.get("/", (req, res) => {
   // res.send('hello');
   //res.send("hello");
-  res.send('hello');
- // res.sendFile(path.join(__dirname + "/index.html"));
+  // res.send('hello');
+ res.sendFile(path.join(__dirname + "/index.html"));
 });
 
   // naming route
@@ -53,10 +53,13 @@ app.post("https://priceless-gates-089bd3.netlify.com/name", async(req, res) => {
 app.get('/hello',(req,res)=>{
   // res.sendFile(path.join(__dirname + "/views/hello.ejs"));
     
-res.render("hello");
+  res.render("hello");
 })
 
-
+const a=process.env.PORT;
+console.log(a);
+const b=process.env.IP
+console.log(b);
 app.listen(process.env.PORT,process.env.ip)
 //Listen on port 3000
 // app.listen(port, () => {
