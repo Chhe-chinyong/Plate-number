@@ -57,7 +57,8 @@ res.render("hello");
 })
 
 
+app.listen(process.env.PORT,process.env.ip)
 //Listen on port 3000
-app.listen(port, () => {
-  console.log(chalk.bold.underline.greenBright("https://friendly-sammet-e3698d.netlify.com/"));
-})
+// app.listen(port, () => {
+//   console.log(chalk.bold.underline.greenBright("https://friendly-sammet-e3698d.netlify.com/"));
+// })
