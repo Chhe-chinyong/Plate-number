@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 router.post("/name", async(req, res) => {
     const newName = {name: req.body.name};
     const name=newName.name;
-    const check=validator.validation(newName.name);
+    const check=validator.wordValidation(newName.name);
     if(check){
       return res.status(400).json({ bad_name: name});
     }
