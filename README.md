@@ -1,1 +1,4 @@
 # Plate-number
+
+**npm install**
+
