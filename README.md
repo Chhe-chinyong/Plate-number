@@ -1,4 +1,4 @@
 # Plate-number
 
-**npm install**
+**npm ci**
 
