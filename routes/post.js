@@ -3,7 +3,7 @@ const router = express.Router();
 const app = express();
 const validator = require("../validator/validation");
 const writeImg = require("../fn/writeImg");
-const path = "/Users/user/Desktop/yong1/";
+const path = "/Users/user/Desktop/Plate-number/";
 app.set("view engine", "ejs");
 
 // home page
