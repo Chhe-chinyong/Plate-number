@@ -24,7 +24,7 @@ router.post("/name", async (req, res) => {
   }
   setTimeout(() => {
     return res.sendFile(path.join(__dirname, "..", "img-temp/hello.jpg"));
-  }, 400);
+  }, 500);
 });
 
 router.get("/hello", (req, res) => {
