@@ -23,7 +23,7 @@ router.post("/name", async (req, res) => {
     writeImg(name.toUpperCase());
   }
   setTimeout(() => {
-    return res.sendFile("/Users/user/Desktop/Plate-number/img-temp/hello.jpg");
+    return res.sendFile(path.join(__dirname,'..','img-temp/hello.jpg");
   }, 400);
 });
 
