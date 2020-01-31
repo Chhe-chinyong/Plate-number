@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 ///////////initialize////////////////
 dotenv.config();
-//const PORT = process.env.port || process.env.IP || 3000;
+const PORT = process.env.PORT || process.env.IP || 3000;
 app.use(express.json());
 //////////Connect to database /////////////
 try {
@@ -33,6 +33,6 @@ app.use("/", require("./routes/post"));
 app.use("/", require("./routes/auth"));
 
 ////////////Listening///////////////
-app.listen(process.env.PORT, process.env.IP, () => {
+app.listen(PORT, () => {
   console.log(chalk.bold.underline.greenBright("http://localhost:3000"));
 });
