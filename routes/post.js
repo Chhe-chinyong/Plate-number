@@ -3,12 +3,13 @@ const router = express.Router();
 const app = express();
 const validator = require("../validator/validation");
 const writeImg = require("../fn/writeImg");
-const path = "/Users/user/Desktop/Plate-number/";
+const path = require("path");
 app.set("view engine", "ejs");
 
 // home page
 router.get("/", (req, res) => {
-  res.sendFile(path + "index.html");
+  //console.log(path.join(__dirname, "..", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
 // naming route
