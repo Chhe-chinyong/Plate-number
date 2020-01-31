@@ -1,8 +1,9 @@
 const Filter = require("bad-words");
-const Joi = require("@hapi/joi");
+const Joi = require("@hapi/joi").extend(require("@hapi/joi-date"));
 filter = new Filter({ placeHolder: "#" });
 // Add bad words
 filter.addWords("KDET", "KDOR", "KDMV");
+var d = new Date();
 
 //WordValidation
 const wordValidation = function WordValidation(name) {
@@ -35,7 +36,19 @@ const registerValidation = data => {
     email: Joi.string()
       .trim()
       .email()
+      .required(),
+    address: Joi.string()
+      .trim()
+      .required(),
+    DOB: Joi.date()
       .required()
+      .format(["YYYY/MM/DD", "DD-MM-YYYY"]) // String
+      .options({ convert: false })
+
+    // Joi.number()
+    //   .integer()
+    //   .min(1900)
+    //   .max(d.getFullYear())
   });
   return schema.validate(data);
 };
