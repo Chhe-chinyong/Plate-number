@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 ///////////initialize////////////////
 dotenv.config();
-const PORT = process.env.port || process.env.IP;
+const PORT = process.env.port || process.env.IP || 3000;
 app.use(express.json());
 //////////Connect to database /////////////
 try {
