@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^17.1.0",
+    "@hapi/joi-date": "^2.0.1",
     "add-text-to-image": "^1.0.1",
     "bad-words": "^3.0.3",
     "bcrypt": "^3.0.7",
