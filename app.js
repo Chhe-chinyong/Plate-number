@@ -37,6 +37,7 @@ app.use("/", require("./routes/auth"));
 ////////////Listening///////////////
 app.listen(PORT, (req, res) => {
   const HOST = process.env.host;
+  console.log(HOST);
   if (HOST == "http://thawing-anchorage-83767.herokuapp.com") {
     console.log(chalk.bold.underline.greenBright(HOST));
   }

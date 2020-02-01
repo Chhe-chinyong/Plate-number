@@ -14,6 +14,7 @@ var UserSchema = new mongoose.Schema({
 var BuySchema = new mongoose.Schema({
   _userId: { type: mongoose.Schema.Types.ObjectId, required: true },
   buyer_name: { type: String, required: true },
+  plate_number: { type: String, required: true, min: 4, max: 8 },
   price: { type: Number, required: true },
   phone: { type: String, required: true },
   Buy_date: { type: Date, default: Date.now }

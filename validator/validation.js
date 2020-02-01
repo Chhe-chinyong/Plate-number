@@ -42,13 +42,8 @@ const registerValidation = data => {
       .required(),
     DOB: Joi.date()
       .required()
-      .format(["YYYY/MM/DD", "DD-MM-YYYY"]) // String
-      .options({ convert: false })
-
-    // Joi.number()
-    //   .integer()
-    //   .min(1900)
-    //   .max(d.getFullYear())
+      .format(["YYYY/MM/DD", "DD-MM-YYYY", "DD/MM/YYYY", "YYYY-MM-DD"]) // String
+      .raw()
   });
   return schema.validate(data);
 };

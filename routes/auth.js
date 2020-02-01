@@ -49,7 +49,9 @@ router.post("/register", async (req, res, next) => {
   const user = new User({
     phone: req.body.phone,
     password: hash_pass,
-    email: req.body.email
+    email: req.body.email,
+    address: req.body.address,
+    DOB: req.body.DOB
   });
   try {
     //save to database
