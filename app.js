@@ -8,6 +8,7 @@ const cors = require("cors");
 const QRCode = require("qrcode");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+var url = require("url");
 
 ///////////initialize////////////////
 dotenv.config();
@@ -33,6 +34,10 @@ app.use("/", require("./routes/post"));
 app.use("/", require("./routes/auth"));
 
 ////////////Listening///////////////
-app.listen(PORT, () => {
-  console.log(chalk.bold.underline.greenBright("http://localhost:3000"));
+app.listen(PORT, (req, res) => {
+  console.log(chalk.bold.underline.greenBright(`http://localhost:${PORT}`));
+
+  // req.fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
 });
+// var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+//console.log(chalk.bold.underline.greenBright(fullUrl));
