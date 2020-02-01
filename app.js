@@ -14,6 +14,9 @@ var url = require("url");
 dotenv.config();
 const PORT = process.env.PORT || process.env.IP || 3000;
 app.use(express.json());
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //////////Connect to database /////////////
 try {
   mongoose.connect(
@@ -26,10 +29,8 @@ try {
 } catch (err) {
   console.log(chalk.black.bgRed("CANOT CONNECT TO DATABASE"));
 }
-////////////Middleware///////////////
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
 
+////////////Middleware///////////////
 app.use("/", require("./routes/post"));
 app.use("/", require("./routes/auth"));
 
