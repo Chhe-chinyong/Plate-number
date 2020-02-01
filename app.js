@@ -35,9 +35,9 @@ app.use("/", require("./routes/auth"));
 
 ////////////Listening///////////////
 app.listen(PORT, (req, res) => {
-  console.log(chalk.bold.underline.greenBright(`http://localhost:${PORT}`));
-
-  // req.fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+  const HOST = process.env.host;
+  if (HOST == "http://thawing-anchorage-83767.herokuapp.com") {
+    console.log(chalk.bold.underline.greenBright(HOST));
+  }
+  console.log(chalk.bold.underline.greenBright(`http://${HOST}${PORT}`));
 });
-// var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
-//console.log(chalk.bold.underline.greenBright(fullUrl));
