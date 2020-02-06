@@ -67,7 +67,7 @@ router.post("/buy", auth, async (req, res) => {
 
 router.get("/QR", (req, res) => {
   var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
-  res.send("hello");
+  //res.send("hello");
   console.log(fullUrl);
   console.log(req.query);
   res.send(req.query);
