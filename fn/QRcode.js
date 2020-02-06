@@ -9,7 +9,7 @@ const generateQR = async text => {
 };
 
 generateQR(
-  "http://thawing-anchorage-83767.herokuapp.com/name/QR/?key1=value1&key2=value2&key3=value3"
+  "http://thawing-anchorage-83767.herokuapp.com/name/QR/?_userId=1&buyer_name=yong&plate_number=111111"
 );
 
 generateQR("HelloWordl");
