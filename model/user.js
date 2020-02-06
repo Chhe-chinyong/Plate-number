@@ -18,6 +18,7 @@ var BuySchema = new mongoose.Schema({
   plate_number: { type: String, required: true, min: 4, max: 8 },
   price: { type: Number, required: true },
   phone: { type: String, required: true },
+  img_path: { type: String, required: true },
   Buy_date: { type: Date, default: Date.now }
 });
 

@@ -10,6 +10,7 @@ const models = require("../model/user");
 const jwt = require("jsonwebtoken");
 
 const { Buyer, User } = models;
+const { writeImg1, writeImg2 } = writeImg;
 app.set("view engine", "ejs");
 let name;
 let price;
@@ -32,7 +33,7 @@ router.post("/name", async (req, res) => {
   if (check.check) {
     return res.status(400).json(check.error);
   } else {
-    writeImg(name.toUpperCase());
+    writeImg.writeImg1(name.toUpperCase());
     price = generate(name);
     console.log(price);
   }
@@ -48,6 +49,9 @@ router.post("/buy", auth, async (req, res) => {
   console.log(decoded);
   const user = await User.findOne({ _id: decoded._id });
   console.log(user);
+  //QRcode URL
+  const qrURL = `http://localhost:3000/QR/?_userId=${user._id}&buyer_name=${user.username}&plate_number=${name}&phone=${user.phone}&DOB=${User.DOB}`;
+  writeImg(name.toUpperCase(), qrURL);
   const buyer = new Buyer({
     _userId: user._id,
     buyer_name: user.username,
@@ -55,11 +59,12 @@ router.post("/buy", auth, async (req, res) => {
     price: price,
     phone: user.phone,
     DOB: user.DOB
+    // img_path:`http://localhost:3000/public/img/${}`
   });
   try {
     const save_buyer = await buyer.save();
+    if (!save_buyer) throw "error save to database";
     return res.send(save_buyer);
-    throw "error save to database";
   } catch (error) {
     res.send(error);
   }
