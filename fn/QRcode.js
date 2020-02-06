@@ -11,5 +11,3 @@ const generateQR = async text => {
 generateQR(
   "http://thawing-anchorage-83767.herokuapp.com/QR/?_userId=1&buyer_name=yong&plate_number=111111"
 );
-
-generateQR("HelloWordl");
