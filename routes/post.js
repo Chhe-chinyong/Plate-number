@@ -5,7 +5,11 @@ const validator = require("../validator/validation");
 const writeImg = require("../fn/writeImg");
 const path = require("path");
 const auth = require("../validator/verifyToken");
-const buy = require("../fn/generate.js");
+const generate = require("../fn/generate.js");
+const models = require("../model/user");
+const jwt = require("jsonwebtoken");
+
+const { Buyer } = models;
 app.set("view engine", "ejs");
 let name;
 let price;
@@ -24,7 +28,7 @@ router.post("/name", async (req, res) => {
     return res.status(400).json(check.error);
   } else {
     writeImg(name.toUpperCase());
-    price = buy(name);
+    price = generate(name);
     console.log(price);
   }
   setTimeout(() => {
@@ -33,6 +37,17 @@ router.post("/name", async (req, res) => {
   }, 500);
 });
 
-router.post("/buy", auth, (req, res) => {});
+router.post("/buy", auth, (req, res) => {
+  const token = req.header("auth-token");
+  var decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+  console.log(decoded);
+  res.send(decoded);
+  /* const buyer=new Buyer({
+    buyer_name:,
+    plate_number:,
+    price: ,
+    phone:  ,
+  })*/
+});
 
 module.exports = router;

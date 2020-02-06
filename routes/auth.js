@@ -110,7 +110,6 @@ router.post("/login", async (req, res, next) => {
   const email_verify = check.isVerified;
   if (email_verify == false)
     return res.status(400).send("pls verify your email");
-
   const token = jwt.sign({ _id: check._id }, process.env.TOKEN_SECRET);
   res.header("auth-token", token).send(token); // auth-token is name whatever u want
 });
