@@ -9,7 +9,7 @@ const generate = require("../fn/generate.js");
 const models = require("../model/user");
 const jwt = require("jsonwebtoken");
 
-const { Buyer } = models;
+const { Buyer, User } = models;
 app.set("view engine", "ejs");
 let name;
 let price;
@@ -23,6 +23,11 @@ router.get("/", (req, res) => {
 router.post("/name", async (req, res) => {
   const newName = { name: req.body.name };
   name = newName.name;
+  console.log(name);
+  //find in database plate_number
+  const found = await Buyer.findOne({ plate_number: name });
+  if (found) return res.status(400).send(name + " Is " + " Not available");
+
   const check = validator.wordValidation(newName.name);
   if (check.check) {
     return res.status(400).json(check.error);
@@ -37,17 +42,27 @@ router.post("/name", async (req, res) => {
   }, 500);
 });
 
-router.post("/buy", auth, (req, res) => {
+router.post("/buy", auth, async (req, res) => {
   const token = req.header("auth-token");
   var decoded = jwt.verify(token, process.env.TOKEN_SECRET);
   console.log(decoded);
-  res.send(decoded);
-  /* const buyer=new Buyer({
-    buyer_name:,
-    plate_number:,
-    price: ,
-    phone:  ,
-  })*/
+  const user = await User.findOne({ _id: decoded._id });
+  console.log(user);
+  const buyer = new Buyer({
+    _userId: user._id,
+    buyer_name: user.username,
+    plate_number: name,
+    price: price,
+    phone: user.phone,
+    DOB: user.DOB
+  });
+  try {
+    const save_buyer = await buyer.save();
+    return res.send(save_buyer);
+    throw "error save to database";
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 module.exports = router;

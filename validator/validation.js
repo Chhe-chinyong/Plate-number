@@ -43,6 +43,9 @@ const registerValidation = data => {
     DOB: Joi.date()
       .required()
       .format(["YYYY/MM/DD", "DD-MM-YYYY", "DD/MM/YYYY", "YYYY-MM-DD"]) // String
+      .raw(),
+    username: Joi.string()
+      .required()
       .raw()
   });
   return schema.validate(data);

@@ -7,7 +7,8 @@ var UserSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   isVerified: { type: Boolean, default: false },
   address: { type: String, required: true },
-  DOB: { type: Date, required: true, min: 1900 }
+  DOB: { type: Date, required: true, min: 1900 },
+  username: { type: String, required: true }
   //confirmed:{type:Boolean,default:false}
 });
 

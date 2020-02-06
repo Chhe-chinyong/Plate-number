@@ -51,7 +51,8 @@ router.post("/register", async (req, res, next) => {
     password: hash_pass,
     email: req.body.email,
     address: req.body.address,
-    DOB: req.body.DOB
+    DOB: req.body.DOB,
+    username: req.body.username
   });
   try {
     //save to database
