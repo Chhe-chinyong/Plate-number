@@ -12,5 +12,6 @@ module.exports = function gernate(name) {
       return 1000;
     }
   }
+  return 100;
   //check if (name)
 };
