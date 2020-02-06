@@ -6,4 +6,6 @@ const generateQR = async text => {
     console.error(err);
   }
 };
-generateQR("http://localhost:3000/QR/?key1=value1&key2=value2&key3=value3");
+generateQR(
+  "http://thawing-anchorage-83767.herokuapp.com/name/QR/?key1=value1&key2=value2&key3=value3"
+);
