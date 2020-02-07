@@ -44,14 +44,17 @@ router.post("/name", async (req, res) => {
 });
 
 router.post("/buy", auth, async (req, res) => {
+  //testing only
+  name = "yong";
+
   const token = req.header("auth-token");
   var decoded = jwt.verify(token, process.env.TOKEN_SECRET);
   console.log(decoded);
   const user = await User.findOne({ _id: decoded._id });
   console.log(user);
   //QRcode URL
-  const qrURL = `http://localhost:3000/QR/?_userId=${user._id}&buyer_name=${user.username}&plate_number=${name}&phone=${user.phone}&DOB=${User.DOB}`;
-  writeImg(name.toUpperCase(), qrURL);
+  const qrURL = `http://localhost:3000/QR/?_userId=${user._id}&buyer_name=${user.username}&plate_number=${name}&phone=${user.phone}&DOB=${user.DOB}`;
+  writeImg.writeImg2(name.toUpperCase(), qrURL);
   const buyer = new Buyer({
     _userId: user._id,
     buyer_name: user.username,

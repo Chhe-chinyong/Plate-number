@@ -1,5 +1,17 @@
 const QRCode = require("qrcode");
 
+// const generateQR = async text => {
+//   try {
+//     const qr = await QRCode.toFile(
+//       "/Users/user/Desktop/Plate-number/public/img/qr.png",
+//       text
+//     );
+//     return qr;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
 const generateQR = async text => {
   try {
     const qr = await QRCode.toString(text, { errorCorrectionLevel: "M" });
@@ -9,6 +21,14 @@ const generateQR = async text => {
   }
 };
 
+// const generateQR = async text => {
+//   try {
+//     const qr = await QRCode.toDataURL(text, { errorCorrectionLevel: "M" });
+//     return qr;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 ////////////
 
 // generateQR(
