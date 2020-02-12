@@ -45,7 +45,6 @@ router.post("/name", async (req, res) => {
 
 router.post("/buy", auth, async (req, res) => {
   //testing only
-  name = "yong";
 
   const token = req.header("auth-token");
   var decoded = jwt.verify(token, process.env.TOKEN_SECRET);
@@ -54,15 +53,16 @@ router.post("/buy", auth, async (req, res) => {
   console.log(user);
   //QRcode URL
   const qrURL = `http://localhost:3000/QR/?_userId=${user._id}&buyer_name=${user.username}&plate_number=${name}&phone=${user.phone}&DOB=${user.DOB}`;
-  writeImg.writeImg2(name.toUpperCase(), qrURL);
+  const userID = user._id;
+  writeImg.writeImg2(name.toUpperCase(), qrURL, userID);
   const buyer = new Buyer({
     _userId: user._id,
     buyer_name: user.username,
     plate_number: name,
     price: price,
     phone: user.phone,
-    DOB: user.DOB
-    // img_path:`http://localhost:3000/public/img/${}`
+    DOB: user.DOB,
+    img_path: `http://localhost:3000/public/img-temp/${userID}`
   });
   try {
     const save_buyer = await buyer.save();

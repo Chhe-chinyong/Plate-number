@@ -1,25 +1,25 @@
 const QRCode = require("qrcode");
 
-// const generateQR = async text => {
-//   try {
-//     const qr = await QRCode.toFile(
-//       "/Users/user/Desktop/Plate-number/public/img/qr.png",
-//       text
-//     );
-//     return qr;
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-
-const generateQR = async text => {
+const generateQR = async (text, userID) => {
   try {
-    const qr = await QRCode.toString(text, { errorCorrectionLevel: "M" });
+    const qr = await QRCode.toFile(
+      `/Users/user/Desktop/Plate-number/public/img/${userID}.png`,
+      text
+    );
     return qr;
   } catch (err) {
     console.error(err);
   }
 };
+
+// const generateQR = async text => {
+//   try {
+//     const qr = await QRCode.toString(text, { errorCorrectionLevel: "M" });
+//     return qr;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
 // const generateQR = async text => {
 //   try {
