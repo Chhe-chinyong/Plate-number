@@ -1,0 +1,25 @@
+body {
+  background-color: lightgray;
+  height: 100%;
+  width: 85%;
+  margin: 0 auto 0 auto;
+}
+
+.container {
+  height: 80%;
+  background-color: white;
+  background-size: 300px 100px;
+}
+
+.search-name {
+  height: 20px;
+  width: 100px;
+  background-color: antiquewhite;
+}
+
+h1 {
+  text-align: center;
+  color: #dff9fb;
+  background-color: #30336b;
+  margin: auto;
+}

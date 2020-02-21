@@ -15,10 +15,10 @@ app.set("view engine", "ejs");
 let name;
 let price;
 // home page
-router.get("/", (req, res) => {
-  //console.log(path.join(__dirname, "..", "index.html"));
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
+// router.get("/", (req, res) => {
+//   //console.log(path.join(__dirname, "..", "index.html"));
+//   res.sendFile(path.join(__dirname, "..", "index.html"));
+// });
 
 // naming route
 router.post("/name", async (req, res) => {
@@ -51,6 +51,11 @@ router.post("/buy", auth, async (req, res) => {
   console.log(decoded);
   const user = await User.findOne({ _id: decoded._id });
   console.log(user);
+  const check = await Buyer.findOne({ buyer_name: user.username });
+  if (check)
+    return res.send(
+      `U have already bought one ${check.plate_number.toUpperCase()}`
+    );
   //QRcode URL
   const qrURL = `http://localhost:3000/QR/?_userId=${user._id}&buyer_name=${user.username}&plate_number=${name}&phone=${user.phone}&DOB=${user.DOB}`;
   const userID = user._id;
