@@ -14,7 +14,7 @@
     "@hapi/joi-date": "^2.0.1",
     "add-text-to-image": "^1.0.1",
     "bad-words": "^3.0.3",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
     "colors": "^1.4.0",
